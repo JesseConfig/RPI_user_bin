@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+if [ ! $1 ]; then 
+  echo "------------------------------"
+  echo "     usage: fzf_mv [dir]      "
+  echo "------------------------------"
+  exit 0
+elif [ -d $1 ]; then
+  fzf -m |xargs -n1 -i mv {} $1
+else
+  echo "------------------------------"
+  echo "     $1 Not is Dir !          "
+  echo "------------------------------"
+  exit 0
+fi

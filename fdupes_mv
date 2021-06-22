@@ -1,0 +1,23 @@
+#!/bin/bash
+
+MY_SAVEIFS=$IFS
+#IFS=$(echo -en "\n\b")
+
+path=`pwd`
+dir="SS_MV"
+
+IFS=$'\n'
+
+[ -d $dir  ] || mkdir $dir || echo 'Dir is ok'
+
+ca=`fdupes $path  -r`
+i=1
+for x in $ca
+do
+	echo $((i++))--$x
+	mv -b -S .bak $x $dir/
+done
+
+IFS=$MY_SAVEIFS
+
+
